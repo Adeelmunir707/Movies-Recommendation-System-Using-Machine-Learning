@@ -5,6 +5,67 @@ import pickle
 import pandas as pd
 import requests
 
+#=====================================
+st.set_page_config(
+    page_title="AI Movie Recommender",
+    page_icon="🎬",
+    layout="wide"
+)
+# ======================================
+
+st.markdown("""
+<style>
+
+/* Background */
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+}
+
+/* Title */
+.big-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(90deg, #38bdf8, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Subtitle */
+.sub-text {
+    text-align: center;
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+/* Card */
+.movie-card {
+    background: #1e293b;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+/* Button */
+.stButton>button {
+    background: linear-gradient(90deg, #6366f1, #38bdf8);
+    color: white;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
 
 def recommend(movie):
     movie_index = movies[movies['title'] == movie].index[0]
@@ -48,37 +109,25 @@ movies = pd.DataFrame(movies_dict)
 # similarity file
 similarity= pickle.load(open('similarity.pkl','rb'))          # loading movies list and opeingin it in read binary
 
-st.title("Movies Recomender System")
+st.markdown('<p class="big-title">🤖 AI Movie Recommender</p>', unsafe_allow_html=True)
+st.markdown('<p class="sub-text">Discover movies powered by Machine Learning</p>', unsafe_allow_html=True)
 
 # getting the movies list from the movie_recomender.ipynb to here,
 # using pikkle library
 selected_movie_name = st.selectbox(
-    'Now Get What You Want',
-    (movies['title'].values)
+    '🎬 Choose a movie',
+    movies['title'].values
 )
 
 # button
-if st.button('Recommend', 'Thanks'):
-    names,posters = recommend(selected_movie_name)
-    col1, col2, col3, col4, col5 = st.columns(5)
-    with col1:
-        st.text(names[0])
-        st.image(posters[0])
+if st.button('✨ Recommend Movies'):
+    names, posters = recommend(selected_movie_name)
 
-    with col2:
-        st.text(names[1])
-        st.image(posters[1])
+    cols = st.columns(5)
 
-    with col3:
-        st.text(names[2])
-        st.image(posters[2])
-
-    with col4:
-        st.text(names[3])
-        st.image(posters[3])
-
-    with col5:
-        st.text(names[4])
-        st.image(posters[4])
-
-
+    for i in range(5):
+        with cols[i]:
+            st.markdown('<div class="movie-card">', unsafe_allow_html=True)
+            st.image(posters[i])
+            st.markdown(f"**{names[i]}**")
+            st.markdown('</div>', unsafe_allow_html=True)
