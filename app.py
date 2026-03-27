@@ -23,6 +23,7 @@ st.markdown("""
     margin: auto;
 }
 
+
 /* Background */
 body {
     background: linear-gradient(135deg, #0f172a, #1e293b);
@@ -129,8 +130,25 @@ movies = pd.DataFrame(movies_dict)
 # similarity file
 similarity= pickle.load(open('similarity.pkl','rb'))          # loading movies list and opeingin it in read binary
 
-st.title('<p class="big-title">🤖 AI Movie Recommender</p>', unsafe_allow_html=True)
-st.markdown('<p class="sub-text">Discover movies powered by Machine Learning</p>', unsafe_allow_html=True)
+# Big centered gradient title (h1)
+st.markdown("""<h1 style="
+    text-align: center; 
+    font-size: 3rem; 
+    font-weight: 700; 
+    background: linear-gradient(90deg, #38bdf8, #6366f1); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+">
+🤖 AI Movie Recommender
+</h1>
+""", unsafe_allow_html=True)
+
+# Subtitle (h3) centered and modern
+st.markdown("""
+<h3 style="text-align: center; color: #94a3b8; font-weight: 400; margin-top: -10px;">
+Discover movies powered by Machine Learning
+</h3>
+""", unsafe_allow_html=True)
 
 # getting the movies list from the movie_recomender.ipynb to here,
 # using pikkle library
