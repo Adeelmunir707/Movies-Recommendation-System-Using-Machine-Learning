@@ -129,7 +129,7 @@ movies = pd.DataFrame(movies_dict)
 # similarity file
 similarity= pickle.load(open('similarity.pkl','rb'))          # loading movies list and opeingin it in read binary
 
-st.markdown('<p class="big-title">🤖 AI Movie Recommender</p>', unsafe_allow_html=True)
+st.title('<p class="big-title">🤖 AI Movie Recommender</p>', unsafe_allow_html=True)
 st.markdown('<p class="sub-text">Discover movies powered by Machine Learning</p>', unsafe_allow_html=True)
 
 # getting the movies list from the movie_recomender.ipynb to here,
