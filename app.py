@@ -15,33 +15,12 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* Remove default padding/margins */
+/* Center content with controlled width */
 .block-container {
-    padding-top: 1rem;
-    padding-bottom: 0rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    max-width: 100% !important;
-}
-
-/* Make app stretch full width */
-.css-18e3th9 {
-    padding: 0 !important;
-}
-
-/* Remove extra whitespace */
-.css-1d391kg {
-    padding: 0 !important;
-}
-
-/* Optional: center content nicely */
-.main {
-    max-width: 100%;
-}
-
-/* Movie cards spacing */
-.movie-card {
-    width: 100%;
+    max-width: 1200px;   /* 🔥 KEY FIX */
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    margin: auto;
 }
 
 /* Background */
@@ -70,14 +49,15 @@ body {
 /* Card */
 .movie-card {
     background: #1e293b;
-    padding: 10px;
+    padding: 12px;
     border-radius: 15px;
     text-align: center;
     transition: 0.3s;
 }
 
+/* Hover effect */
 .movie-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-8px);
 }
 
 /* Button */
@@ -89,6 +69,18 @@ body {
     width: 100%;
     font-size: 18px;
     font-weight: bold;
+    border: none;
+}
+
+/* Selectbox */
+.stSelectbox div[data-baseweb="select"] {
+    background-color: #1e293b;
+    border-radius: 10px;
+}
+
+/* Image styling */
+img {
+    border-radius: 10px;
 }
 
 </style>
