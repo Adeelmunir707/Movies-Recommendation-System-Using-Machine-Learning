@@ -1,5 +1,4 @@
 # we can use flask, but we will use streamlit library for our API
-
 import streamlit as st
 import pickle
 import pandas as pd
@@ -15,6 +14,35 @@ st.set_page_config(
 
 st.markdown("""
 <style>
+
+/* Remove default padding/margins */
+.block-container {
+    padding-top: 1rem;
+    padding-bottom: 0rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 100% !important;
+}
+
+/* Make app stretch full width */
+.css-18e3th9 {
+    padding: 0 !important;
+}
+
+/* Remove extra whitespace */
+.css-1d391kg {
+    padding: 0 !important;
+}
+
+/* Optional: center content nicely */
+.main {
+    max-width: 100%;
+}
+
+/* Movie cards spacing */
+.movie-card {
+    width: 100%;
+}
 
 /* Background */
 body {
