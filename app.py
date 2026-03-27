@@ -22,12 +22,23 @@ def recommend(movie):
     return recomended_movies,recomended_movies_poster
 
 def fetch(movie_id):
-    url = "https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US".format(movie_id)
-    data = requests.get(url)
-    data = data.json()
-    poster_path = data['poster_path']
-    full_path = "https://image.tmdb.org/t/p/w500/" + poster_path
-    return full_path
+    try:
+        url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US"
+        response = requests.get(url)
+
+        if response.status_code != 200:
+            return "https://via.placeholder.com/500x750?text=API+Error"
+
+        data = response.json()
+
+        poster_path = data.get('poster_path')
+        if poster_path:
+            return "https://image.tmdb.org/t/p/w500/" + poster_path
+        else:
+            return "https://via.placeholder.com/500x750?text=No+Image"
+
+    except:
+        return "https://via.placeholder.com/500x750?text=Error"
 
 
 # movies file
