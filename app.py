@@ -157,7 +157,7 @@ selected_movie_name = st.selectbox(
     movies['title'].values
 )
 
-# button
+# Streamlit button
 if st.button('✨ Recommend Movies'):
     names, posters = recommend(selected_movie_name)
 
